@@ -13,25 +13,24 @@ class OrderSummary extends Component {
     return (
       <div>
         <CheckOutButton />
-       
-        <table>
-          <thead><tr><th>Order Summary</th></tr></thead>
+        <h4>Order Summary</h4>
+        <table className='table'>
           <tbody>
             <tr>
               <th>Subtotal</th>
-              <th>$652.00</th>
+              <td>$652.00</td>
             </tr>
             <tr>
               <th>Shipping</th>
-              <th>$54.50</th>
+              <td>$54.50</td>
             </tr>
             <tr>
               <th>Tax</th>
-              <th>$134.24</th>
+              <td>$134.24</td>
             </tr>
-            <tr>
+            <tr className='total-tr'>
               <th>Total</th>
-              <th>$840.74</th>
+              <td>$840.74</td>
             </tr>
           </tbody>
         </table>

@@ -1,3 +1,37 @@
 body {
   background-color: #fefefe;
 }
+
+.container {
+  padding: 2em;
+  margin-top: 2em;
+  border: 1px solid black;
+  border-radius: 0.2em;
+  background-color: #fff;
+}
+
+.checkout-button-container {
+  margin-bottom: 2em;
+}
+
+td {
+  text-align: right;
+  margin-right: 2em;
+}
+
+.table th {
+  padding-left: 0px;
+}
+
+.total-tr {
+  font-size: 120%;
+}
+
+.item-quantity {
+  margin-right: 1em;
+}
+
+.customer-service-message {
+  font-size: 0.68em;
+  padding-top: 1em;
+}

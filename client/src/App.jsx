@@ -5,7 +5,7 @@ import CheckOutView from './components/CheckOutView';
 
 const App = ({isCheckingOut}) => {
   return (
-    <div>
+    <div className='container'>
       {isCheckingOut ? <CheckOutView /> : <CartManageView />}
     </div>
   );

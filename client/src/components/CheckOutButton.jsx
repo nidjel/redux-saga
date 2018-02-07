@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 class CheckOutButton extends Component {
   render() {
     return (
-      <div>
-        <button>Check Out</button>
+      <div className='text-center checkout-button-container'>
+        <button className='btn btn-primary btn-lg'>Check Out</button>
       </div>
     );
   }

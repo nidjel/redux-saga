@@ -10,11 +10,14 @@ function mapStateToProps(state) {
 const CartItem = ({item}) => {
   return (
     <div>
-      <h4>{item.name}</h4>
-      <p>${item.usd}</p>
+      <h5>{item.name}</h5>
+      <div>${item.usd}</div>
       <p>{item.description}</p>
-      <span>Quantity:{item.quantity}</span>
-      <button>-</button><button>+</button>
+      <section>
+        <span className='item-quantity'>Quantity:{item.quantity}</span>
+        <button className='btn btn-secondary'>-</button>
+        <button className='btn btn-secondary'>+</button>
+      </section>
     </div>
   );
 };

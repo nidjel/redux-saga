@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 class SupportAvailable extends Component {
   render() {
     return (
-      <div>
+      <div className='customer-service-message'>
         <p>Customer service representatives are waiting to assist you.</p>
       </div>
     );

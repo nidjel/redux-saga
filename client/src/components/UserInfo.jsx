@@ -10,11 +10,13 @@ function mapStateToProps(state) {
 class UserInfo extends Component {
   render() {
     return (
-      <div>
-        <p>J.R.R Hemingway</p>
-        <p>555 La Floridita Way, CAD</p> 
-        <p>15551234567</p>
-      </div>
+      <section>
+        <p>
+          J.R.R Hemingway<br/>
+          555 La Floridita Way, CAD<br/>
+          15551234567
+        </p>
+      </section>
     );
   }
 }
