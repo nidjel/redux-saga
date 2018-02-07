@@ -8,6 +8,13 @@ module.exports = {
     publicPath: '/',
     path: path.resolve(__dirname, 'public')
   },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  resolve: {
+    extensions: ['.js', '.json', '.jsx'],
+  },
   module: {
     rules: [
       {
@@ -18,9 +25,5 @@ module.exports = {
         }
       }
     ]
-  },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  }
 };

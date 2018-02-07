@@ -1,11 +1,11 @@
 import React from 'react';
 
-const App = () => {
+const CheckOutView = () => {
   return (
     <div>
-      hello!!
+      
     </div>
   );
 };
 
-export default App;
+export default CheckOutView;
