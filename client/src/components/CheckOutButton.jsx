@@ -11,7 +11,7 @@ class CheckOutButton extends Component {
   render() {
     return (
       <div>
-        
+        <button>Check Out</button>
       </div>
     );
   }

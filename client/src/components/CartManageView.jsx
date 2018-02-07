@@ -7,11 +7,16 @@ import OrderSummary from './OrderSummary';
 const CartManageView = () => {
   return (
     <div>
-      <h1>Saga Cart</h1>
-      <UserInfo />
-      <CartItemList />
-      <SupportAvailable />
-      <OrderSummary />
+      <div>
+        <h1>Saga Cart</h1>
+        <UserInfo />
+        <h2>Your Cart</h2>
+        <CartItemList />
+        <SupportAvailable />
+      </div>
+      <div>
+        <OrderSummary />
+      </div>
     </div>
   );
 };
