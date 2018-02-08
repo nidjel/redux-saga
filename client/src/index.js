@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import getStore from './getStore';
-// import * as reducers from './reducers';
+import reducer from './reducers';
 import App from './App';
+import {getCurrentUserInfo} from './actions';
+
+const store = getStore(reducer);
 
 ReactDOM.render(
-  <Provider store={getStore((state, action) => state)}>
-    <App isCheckingOut={false} />
+  <Provider store={store} >
+    <App />
   </Provider>
 , document.getElementById('AppContainer'));
+
+store.dispatch(getCurrentUserInfo('U10000'));

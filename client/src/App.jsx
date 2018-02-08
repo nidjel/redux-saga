@@ -1,7 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import CartManageView from './components/CartManageView';
 import CheckOutView from './components/CheckOutView';
+
+function mapStateToProps(state) {
+  return {
+    isCheckingOut: state.isCheckingOut,
+  };
+}
 
 const App = ({isCheckingOut}) => {
   return (
@@ -11,4 +18,6 @@ const App = ({isCheckingOut}) => {
   );
 };
 
-export default App;
+export default connect(
+  mapStateToProps,
+)(App);
