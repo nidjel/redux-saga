@@ -5,6 +5,7 @@ import cartItems from './cartItems';
 import items from './items';
 import shippingCost from './shippingCost';
 import taxRate from './taxRate';
+import shippingCostFetchStatus from './shippingCostFetchStatus';
 
 export default combineReducers({
   isCheckingOut,
@@ -12,5 +13,6 @@ export default combineReducers({
   cartItems,
   items,
   shippingCost,
-  taxRate
+  taxRate,
+  shippingCostFetchStatus
 });

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import {increaseItemQuantity, decreaseItemQuantity} from '../actions';
+
 function mapStateToProps(state, ownProps) {
   const item = state.items.find(item => item.id === ownProps.id);
   if (item) {
@@ -19,7 +21,14 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-const CartItem = ({name, price, description, quantity, fetched}) => {
+function mapDispatchToProps(dispatch) {
+  return {
+    handleDecreaseItemQuantityClick: (id) => () => dispatch(decreaseItemQuantity(id)),
+    handleIncreaseItemQuantityClick: (id) => () => dispatch(increaseItemQuantity(id))
+  }
+}
+
+const CartItem = ({id, name, price, description, quantity, fetched, handleDecreaseItemQuantityClick, handleIncreaseItemQuantityClick}) => {
   return (
     <div>
       {fetched ? 
@@ -29,8 +38,8 @@ const CartItem = ({name, price, description, quantity, fetched}) => {
         <p>{description}</p>
         <section>
           <span className='item-quantity'>Quantity: {quantity}</span>
-          <button className='btn btn-secondary'>-</button>
-          <button className='btn btn-secondary'>+</button>
+          <button className='btn btn-secondary' onClick={handleDecreaseItemQuantityClick(id)} >-</button>
+          <button className='btn btn-secondary' onClick={handleIncreaseItemQuantityClick(id)} >+</button>
         </section>
       </div> : <div className="spinner"></div>}
       
@@ -40,4 +49,5 @@ const CartItem = ({name, price, description, quantity, fetched}) => {
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps
 )(CartItem);

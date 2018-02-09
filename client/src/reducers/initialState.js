@@ -4,5 +4,6 @@ export default {
   cartItems: null,
   items: [],
   shippingCost: 0,
-  taxRate: 0
+  taxRate: 0,
+  shippingCostFetchStatus: null
 };

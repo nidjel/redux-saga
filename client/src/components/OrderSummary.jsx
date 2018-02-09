@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CheckOutButton from './CheckOutButton';
+import {FETCHED} from '../constants/actionTypes';
 
 function getSubtotal(state) {
   return state.cartItems.reduce((sum, cartItem) => {
@@ -13,12 +14,16 @@ function getSubtotal(state) {
 function mapStateToProps(state) {
   if (state.cartItems && state.items.length === state.cartItems.length) {
     const subtotal = getSubtotal(state);
-    const {shippingCost, taxRate} = state;
+    const shippingCost = state.shippingCostFetchStatus === FETCHED ? state.shippingCost : null;
+    const tax = shippingCost && state.taxRate ? state.taxRate * (subtotal + shippingCost) : null;
+    const fetched = !!(subtotal && shippingCost && tax);
+    const total = fetched ? subtotal + shippingCost + tax : null;
     return {
       subtotal,
       shippingCost,
-      tax: taxRate * (subtotal + shippingCost),
-      fetched: true
+      tax,
+      total,
+      fetched
     };
   } else {
     return {
@@ -27,33 +32,37 @@ function mapStateToProps(state) {
   }
 }
 
-const OrderSummary = ({subtotal, shippingCost, tax, fetched}) => {
-  const total = subtotal + shippingCost + tax;
+const OrderSummary = ({subtotal, shippingCost, tax, fetched, total}) => {
   return (
-      <div>
-        <CheckOutButton />
-        <h4>Order Summary</h4>
-        <table className='table'>
-          <tbody>
-            <tr>
-              <th>Subtotal</th>
-              <td>${subtotal ? subtotal : 0}</td>
-            </tr>
-            <tr>
-              <th>Shipping</th>
-              <td>${shippingCost ? shippingCost : 0}</td>
-            </tr>
-            <tr>
-              <th>Tax</th>
-              <td>${tax ? tax : 0}</td>
-            </tr>
-            <tr className='total-tr'>
-              <th>Total</th>
-              <td>${total ? total : 0}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div>
+      <CheckOutButton />
+      <h4>Order Summary</h4>
+      {fetched ? 
+        <div>
+          <table className='table'>
+            <tbody>
+              <tr>
+                <th>Subtotal</th>
+                <td>${subtotal ? subtotal : 0}</td>
+              </tr>
+              <tr>
+                <th>Shipping</th>
+                <td>${shippingCost ? shippingCost : 0}</td>
+              </tr>
+              <tr>
+                <th>Tax</th>
+                <td>${tax ? tax : 0}</td>
+              </tr>
+              <tr className='total-tr'>
+                <th>Total</th>
+                <td>${total ? total : 0}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> : <div className='spinner'></div>
+      }
+    </div>
+      
     );
   }
 

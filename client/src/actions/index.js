@@ -25,5 +25,17 @@ export function setShippingCost(data) {
 }
 
 export function setTaxRate(data) {
-  return {type: types.SET_TAX_RATE, data}
+  return {type: types.SET_TAX_RATE, data};
+}
+
+export function increaseItemQuantity(id) {
+  return {type: types.INCREASE_ITEM_QUANTITY, id};
+}
+
+export function decreaseItemQuantity(id) {
+  return {type: types.DECREASE_ITEM_QUANTITY, id};
+}
+
+export function setShippingCostFetchStatus(status) {
+  return {type: types.SET_SHIPPING_COST_FETCH_STATUS, status};
 }
