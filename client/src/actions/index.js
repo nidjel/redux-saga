@@ -11,3 +11,11 @@ export function getCurrentUserInfo(userId) {
 export function setCurrentUserInfo(data) {
   return {type: types.SET_CURRENT_USER_INFO, data};
 }
+
+export function setCartItems(data) {
+  return {type: types.SET_CART_ITEMS, data};
+}
+
+export function setItemDetails(data) {
+  return {type: types.SET_ITEM_DETAILS, data};
+}
