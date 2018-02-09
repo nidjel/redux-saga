@@ -19,3 +19,11 @@ export function setCartItems(data) {
 export function setItemDetails(data) {
   return {type: types.SET_ITEM_DETAILS, data};
 }
+
+export function setShippingCost(data) {
+  return {type: types.SET_SHIPPING_COST, data};
+}
+
+export function setTaxRate(data) {
+  return {type: types.SET_TAX_RATE, data}
+}
