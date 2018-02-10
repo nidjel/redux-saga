@@ -5,5 +5,7 @@ export default {
   items: [],
   shippingCost: 0,
   taxRate: 0,
-  shippingCostFetchStatus: null
+  shippingCostFetchStatus: null,
+  itemQuantityFetchStatus: null,
+  itemQuantityErrorMessages: {}
 };

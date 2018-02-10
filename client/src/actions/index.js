@@ -32,10 +32,18 @@ export function increaseItemQuantity(id) {
   return {type: types.INCREASE_ITEM_QUANTITY, id};
 }
 
-export function decreaseItemQuantity(id) {
-  return {type: types.DECREASE_ITEM_QUANTITY, id};
+export function decreaseItemQuantity(id, local=false) {
+  return {type: types.DECREASE_ITEM_QUANTITY, id, local};
 }
 
 export function setShippingCostFetchStatus(status) {
   return {type: types.SET_SHIPPING_COST_FETCH_STATUS, status};
+}
+
+export function setItemQuantityFetchStatus(status) {
+  return {type: types.SET_ITEM_QUANTITY_FETCH_STATUS, status};
+}
+
+export function setItemQuantityErrorMessage(id, message) {
+  return {type: types.SET_ITEM_QUANTITY_ERROR_MESSAGE, id, message};
 }

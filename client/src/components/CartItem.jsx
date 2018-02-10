@@ -8,10 +8,14 @@ function mapStateToProps(state, ownProps) {
   if (item) {
     const price = item[state.currentUser.country.toLowerCase()];
     const {name, description} = item;
+    const {itemQuantityFetchStatus, itemQuantityErrorMessages} = state;
+    const itemQuantityErrorMessage = itemQuantityErrorMessages[ownProps.id] ? itemQuantityErrorMessages[ownProps.id] : null;
     return {
       name,
       price,
       description,
+      itemQuantityFetchStatus,
+      itemQuantityErrorMessage,
       fetched: true
     };
   } else {
@@ -28,7 +32,18 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-const CartItem = ({id, name, price, description, quantity, fetched, handleDecreaseItemQuantityClick, handleIncreaseItemQuantityClick}) => {
+const CartItem = ({
+  id, 
+  name, 
+  price, 
+  description, 
+  quantity, 
+  fetched, 
+  itemQuantityFetchStatus, 
+  itemQuantityErrorMessage,
+  handleDecreaseItemQuantityClick, 
+  handleIncreaseItemQuantityClick
+}) => {
   return (
     <div>
       {fetched ? 
@@ -38,11 +53,19 @@ const CartItem = ({id, name, price, description, quantity, fetched, handleDecrea
         <p>{description}</p>
         <section>
           <span className='item-quantity'>Quantity: {quantity}</span>
-          <button className='btn btn-secondary' onClick={handleDecreaseItemQuantityClick(id)} >-</button>
-          <button className='btn btn-secondary' onClick={handleIncreaseItemQuantityClick(id)} >+</button>
+          <button 
+            className='btn btn-secondary' 
+            onClick={handleDecreaseItemQuantityClick(id)} 
+            disabled={itemQuantityFetchStatus === 'FETCHING'}
+          >-</button>
+          <button 
+            className='btn btn-secondary' 
+            onClick={handleIncreaseItemQuantityClick(id)} 
+            disabled={itemQuantityFetchStatus === 'FETCHING'}
+          >+</button>
+          <span style={{color: 'red', fontSize: '0.7rem', paddingLeft: '15px'}}>{itemQuantityErrorMessage}</span>
         </section>
       </div> : <div className="spinner"></div>}
-      
     </div>
   );
 };
