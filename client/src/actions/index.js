@@ -47,3 +47,7 @@ export function setItemQuantityFetchStatus(status) {
 export function setItemQuantityErrorMessage(id, message) {
   return {type: types.SET_ITEM_QUANTITY_ERROR_MESSAGE, id, message};
 }
+
+export function setCustomerServiceAvailability(availability) {
+  return {type: types.SET_CUSTOMER_SERVICE_AVAILABILITY, availability}
+}

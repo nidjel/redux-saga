@@ -1,7 +1,7 @@
 import {call, put, takeLatest, select} from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 import {INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY, FETCHING, FETCHED} from '../constants/actionTypes';
-import {setItemDetails, decreaseItemQuantity} from '../actions';
+import {decreaseItemQuantity} from '../actions';
 import {currentUserSelector} from '../selectors';
 import {setItemQuantityFetchStatus, setItemQuantityErrorMessage} from '../actions';
 

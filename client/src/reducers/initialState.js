@@ -7,5 +7,6 @@ export default {
   taxRate: 0,
   shippingCostFetchStatus: null,
   itemQuantityFetchStatus: null,
-  itemQuantityErrorMessages: {}
+  itemQuantityErrorMessages: {},
+  customerServiceAvailability: false
 };

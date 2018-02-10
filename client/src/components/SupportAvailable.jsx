@@ -3,18 +3,17 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-
+    serviceAvailability: state.customerServiceAvailability
   };
 }
 
-class SupportAvailable extends Component {
-  render() {
-    return (
-      <div className='customer-service-message'>
-        <p>Customer service representatives are waiting to assist you.</p>
-      </div>
-    );
-  }
+const SupportAvailable = ({serviceAvailability}) => {
+  return (
+    <div className='customer-service-message'>
+      {serviceAvailability ? <p>Customer service representatives are waiting to assist you.</p> : 
+      <p>Sorry, there's no one to assist you at this time.</p>}
+    </div>
+  );
 }
 
 export default connect(

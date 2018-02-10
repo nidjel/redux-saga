@@ -8,6 +8,7 @@ import taxRate from './taxRate';
 import shippingCostFetchStatus from './shippingCostFetchStatus';
 import itemQuantityFetchStatus from './itemQuantityFetchStatus';
 import itemQuantityErrorMessages from './itemQuantityErrorMessages';
+import customerServiceAvailability from './customerServiceAvailability';
 
 export default combineReducers({
   isCheckingOut,
@@ -18,5 +19,6 @@ export default combineReducers({
   taxRate,
   shippingCostFetchStatus,
   itemQuantityFetchStatus,
-  itemQuantityErrorMessages
+  itemQuantityErrorMessages,
+  customerServiceAvailability
 });
