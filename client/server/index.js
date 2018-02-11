@@ -8,6 +8,10 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
+  console.log('new client connected');
+  socket.on('ITEM_QUANTITY_CHANGED', (clientId) => {
+    io.emit('ITEM_QUANTITY_CHANGED', clientId);
+  });
   let supportAvailable = false;
   setInterval(()=>{
     supportAvailable = !supportAvailable;
@@ -28,3 +32,4 @@ app.use(express.static('public'));
 server.listen(port, () => {
   console.info(`Redux Server is listening on port ${port}.`);
 });
+

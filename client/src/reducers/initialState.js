@@ -7,8 +7,8 @@ export default {
   taxRate: 0,
   shippingCostFetchStatus: null,
   itemQuantityFetchStatus: null,
-  itemQuantityErrorMessages: {},
   customerServiceAvailability: false,
   canCheckOut: false,
-  checkOutPhase: null
+  checkOutPhase: null,
+  clientId: null
 };

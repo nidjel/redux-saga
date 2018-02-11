@@ -53,7 +53,7 @@ const CartItem = ({
           <button 
             className='btn btn-secondary' 
             onClick={handleDecreaseItemQuantityClick(id)} 
-            disabled={itemQuantityFetchStatus === 'FETCHING'}
+            disabled={itemQuantityFetchStatus === 'FETCHING' || quantity === 0}
           >-</button>
           <button 
             className='btn btn-secondary' 
