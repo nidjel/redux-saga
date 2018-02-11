@@ -8,14 +8,12 @@ function mapStateToProps(state, ownProps) {
   if (item) {
     const price = item[state.currentUser.country.toLowerCase()];
     const {name, description} = item;
-    const {itemQuantityFetchStatus, itemQuantityErrorMessages} = state;
-    const itemQuantityErrorMessage = itemQuantityErrorMessages[ownProps.id] ? itemQuantityErrorMessages[ownProps.id] : null;
+    const {itemQuantityFetchStatus} = state;
     return {
       name,
       price,
       description,
       itemQuantityFetchStatus,
-      itemQuantityErrorMessage,
       fetched: true
     };
   } else {
@@ -40,7 +38,6 @@ const CartItem = ({
   quantity, 
   fetched, 
   itemQuantityFetchStatus, 
-  itemQuantityErrorMessage,
   handleDecreaseItemQuantityClick, 
   handleIncreaseItemQuantityClick
 }) => {
@@ -63,7 +60,6 @@ const CartItem = ({
             onClick={handleIncreaseItemQuantityClick(id)} 
             disabled={itemQuantityFetchStatus === 'FETCHING'}
           >+</button>
-          <span style={{color: 'red', fontSize: '0.7rem', paddingLeft: '15px'}}>{itemQuantityErrorMessage}</span>
         </section>
       </div> : <div className="spinner"></div>}
     </div>

@@ -8,5 +8,7 @@ export default {
   shippingCostFetchStatus: null,
   itemQuantityFetchStatus: null,
   itemQuantityErrorMessages: {},
-  customerServiceAvailability: false
+  customerServiceAvailability: false,
+  canCheckOut: false,
+  checkOutPhase: null
 };

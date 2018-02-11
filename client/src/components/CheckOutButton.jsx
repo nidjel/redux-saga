@@ -4,7 +4,7 @@ import {toggleCheckingOut} from '../actions';
 
 function mapStateToProps(state) {
   return {
-
+    canCheckOut: state.canCheckOut
   };
 }
 
@@ -16,10 +16,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const CheckOutButton = ({handleRequestCheckOut}) => {
+const CheckOutButton = ({handleRequestCheckOut, canCheckOut}) => {
   return (
     <div className='text-center checkout-button-container'>
-      <button className='btn btn-primary btn-lg' onClick={handleRequestCheckOut} >Check Out</button>
+      <button className='btn btn-primary btn-lg' onClick={handleRequestCheckOut} disabled={!canCheckOut} >Check Out</button>
     </div>
   );
 }

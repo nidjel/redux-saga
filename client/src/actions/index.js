@@ -44,10 +44,14 @@ export function setItemQuantityFetchStatus(status) {
   return {type: types.SET_ITEM_QUANTITY_FETCH_STATUS, status};
 }
 
-export function setItemQuantityErrorMessage(id, message) {
-  return {type: types.SET_ITEM_QUANTITY_ERROR_MESSAGE, id, message};
+export function setCustomerServiceAvailability(availability) {
+  return {type: types.SET_CUSTOMER_SERVICE_AVAILABILITY, availability};
 }
 
-export function setCustomerServiceAvailability(availability) {
-  return {type: types.SET_CUSTOMER_SERVICE_AVAILABILITY, availability}
+export function setCanCheckOut(value) {
+  return {type: types.SET_CAN_CHECKOUT, value};
+}
+
+export function setCheckOutPhase(phase) {
+  return {type: types.SET_CHECKOUT_PHASE, phase};
 }
