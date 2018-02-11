@@ -3,15 +3,10 @@ import {eventChannel} from 'redux-saga';
 import fetch from 'isomorphic-fetch';
 import {INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY, FETCHING, FETCHED} from '../constants/actionTypes';
 import {decreaseItemQuantity} from '../actions';
-<<<<<<< HEAD
 import {currentUserSelector, clientIdSelector} from '../selectors';
 import {setItemQuantityFetchStatus} from '../actions';
 
 const socket = window.io();
-=======
-import {currentUserSelector} from '../selectors';
-import {setItemQuantityFetchStatus} from '../actions';
->>>>>>> a1eec9ce82c9d1ddade56caf8ef0544c892f1288
 
 function* handleDecreaseItemQuantity({id, local}) {
   if (local) {

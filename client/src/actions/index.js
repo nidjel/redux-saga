@@ -54,11 +54,8 @@ export function setCanCheckOut(value) {
 
 export function setCheckOutPhase(phase) {
   return {type: types.SET_CHECKOUT_PHASE, phase};
-<<<<<<< HEAD
 }
 
 export function setClientId(id) {
   return {type: types.SET_CLIENT_ID, id};
-=======
->>>>>>> a1eec9ce82c9d1ddade56caf8ef0544c892f1288
 }
