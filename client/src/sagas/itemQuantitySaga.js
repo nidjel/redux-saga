@@ -3,12 +3,13 @@ import fetch from 'isomorphic-fetch';
 import {INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY, FETCHING, FETCHED} from '../constants/actionTypes';
 import {decreaseItemQuantity} from '../actions';
 import {currentUserSelector} from '../selectors';
-import {setItemQuantityFetchStatus, setItemQuantityErrorMessage} from '../actions';
+import {setItemQuantityFetchStatus} from '../actions';
 
 function* handleDecreaseItemQuantity({id, local}) {
-  if (local) return;
+  if (local) {
+    return;
+  }
   yield put(setItemQuantityFetchStatus(FETCHING));
-  yield put(setItemQuantityErrorMessage(id, null));
   const currentUser = yield select(currentUserSelector);
   const response = yield call(fetch, `http://localhost:8081/cart/remove/${currentUser.id}/${id}`);
   if (response.status !== 200) {
@@ -19,13 +20,12 @@ function* handleDecreaseItemQuantity({id, local}) {
 
 function* handleIncreaseItemQuantity({id}) {
   yield put(setItemQuantityFetchStatus(FETCHING));
-  yield put(setItemQuantityErrorMessage(id, null));
   const currentUser = yield select(currentUserSelector);
   const response = yield call(fetch, `http://localhost:8081/cart/add/${currentUser.id}/${id}`);
   if (response.status !== 200) {
-    yield put(decreaseItemQuantity(id, true));
     const data = yield response.json();
-    yield put(setItemQuantityErrorMessage(id, data.error));
+    alert(data.error);
+    yield put(decreaseItemQuantity(id, true));
   }
   yield put(setItemQuantityFetchStatus(FETCHED));
 }
