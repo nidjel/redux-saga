@@ -4,6 +4,21 @@ const port = 8081;
 const app = express();
 YAML = require('yamljs');
 
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+io.on('connection', function (socket) {
+  console.log('new client connected');
+  socket.on('ITEM_QUANTITY_CHANGED', (clientId) => {
+    io.emit('ITEM_QUANTITY_CHANGED', clientId);
+  });
+  let supportAvailable = false;
+  setInterval(()=>{
+    supportAvailable = !supportAvailable;
+    socket.emit(supportAvailable ? `SUPPORT_AVAILABLE` : `SUPPORT_NOT_AVAILABLE`);
+  },30000);
+});
+
 const serverDelayConstant = 100;
 // Simulate a small amount of delay to demonstrate app's async features
 app.use((req,res,next)=>{
@@ -264,7 +279,7 @@ nativeObject = YAML.load('database.yml',(database)=>{
 
     });
 
-    app.listen(port,()=>{
+    server.listen(port,()=>{
         console.log(`Redux Saga Cart backend server is listening on ${port}`)
     });
 });

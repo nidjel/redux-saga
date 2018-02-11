@@ -5,8 +5,9 @@ import {INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY, FETCHING, FETCHED} from 
 import {decreaseItemQuantity} from '../actions';
 import {currentUserSelector, clientIdSelector} from '../selectors';
 import {setItemQuantityFetchStatus} from '../actions';
+import io from 'socket.io-client';
 
-const socket = window.io();
+const socket = io('http://localhost:8081/');
 
 function* handleDecreaseItemQuantity({id, local}) {
   if (local) {
@@ -39,8 +40,11 @@ function* handleIncreaseItemQuantity({id}) {
 
 export function* itemQuantitySaga() {
   const channel = eventChannel(emit => {
-    socket.on('ITEM_QUANTITY_CHANGED', (fromClientId) => emit(fromClientId));
-    return () => {};
+    const emitFromClientId = (fromClientId) => emit(fromClientId);
+    socket.on('ITEM_QUANTITY_CHANGED', emitFromClientId);
+    return () => {
+      socket.off('ITEM_QUANTITY_CHANGED', emitFromClientId);
+    };
   });
   yield [
     takeLatest(INCREASE_ITEM_QUANTITY, handleIncreaseItemQuantity),
