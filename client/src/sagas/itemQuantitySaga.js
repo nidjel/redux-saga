@@ -36,17 +36,17 @@ function* handleIncreaseItemQuantity({id}) {
 
 export function* itemQuantitySaga() {
   const channel = eventChannel(emit => {
-    const emitSocketId = (socketId) => emit(socketId);
-    socket.on(ITEM_QUANTITY_CHANGED, emitSocketId);
+    const emitData = (socketId) => emit(socketId);
+    socket.on(ITEM_QUANTITY_CHANGED, emitData);
     return () => {
-      socket.off(ITEM_QUANTITY_CHANGED, emitSocketId);
+      socket.off(ITEM_QUANTITY_CHANGED, emitData);
     };
   });
   yield [
     takeLatest(INCREASE_ITEM_QUANTITY, handleIncreaseItemQuantity),
     takeLatest(DECREASE_ITEM_QUANTITY, handleDecreaseItemQuantity),
-    takeLatest(channel, function* (socketId) {
-      if (socket.id !== socketId) yield put({type: ITEM_QUANTITY_CHANGED});
+    takeLatest(channel, function* (socketIdFromServer) {
+      if (socket.id !== socketIdFromServer) yield put({type: ITEM_QUANTITY_CHANGED});
     })
   ]
 }

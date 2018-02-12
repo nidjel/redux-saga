@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
-import {SET_CURRENT_USER_INFO} from '../constants/actionTypes';
+import {SET_CURRENT_USER_INFO, ITEM_QUANTITY_CHANGED} from '../constants/actionTypes';
 import {setCartItems} from '../actions';
 import { currentUserSelector } from '../selectors/currentUserSelector';
 
@@ -12,5 +12,5 @@ function* getCartItems() {
 }
 
 export function* cartSaga() {
-  yield takeLatest([SET_CURRENT_USER_INFO, 'ITEM_QUANTITY_CHANGED'], getCartItems);
+  yield takeLatest([SET_CURRENT_USER_INFO, ITEM_QUANTITY_CHANGED], getCartItems);
 }

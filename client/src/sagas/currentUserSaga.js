@@ -12,5 +12,5 @@ export function* currentUserSaga() {
   const data = yield response.json();
   yield put(setCurrentUserInfo(data));
   const currentUser = yield select(currentUserSelector);
-  socket.emit('userInfo', currentUser.id);
+  socket.emit('userId', currentUser.id);
 }

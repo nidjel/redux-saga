@@ -13,7 +13,7 @@ function getSubtotal(state) {
 }
 
 function mapStateToProps(state) {
-  if (state.cartItems && state.items.length === state.cartItems.length) {
+  if (state.cartItems && state.items.length >= state.cartItems.length) {
     const subtotal = getSubtotal(state);
     const shippingCost = state.shippingCostFetchStatus === FETCHED ? state.shippingCost : null;
     const tax = shippingCost && state.taxRate ? state.taxRate * (subtotal + shippingCost) : null;

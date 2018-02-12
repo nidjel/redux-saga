@@ -21,7 +21,7 @@ const connectedClients = {};
 io.on('connection', function (socket) {
   console.log('new client connected');
 
-  socket.on('userInfo', (userId) => {
+  socket.on('userId', (userId) => {
     if (connectedClients[userId]) {
       connectedClients[userId].push(socket);
     } else {
@@ -43,7 +43,6 @@ io.on('connection', function (socket) {
     supportAvailable = !supportAvailable;
     socket.emit(supportAvailable ? `SUPPORT_AVAILABLE` : `SUPPORT_NOT_AVAILABLE`);
   },30000);
-  socket.on('disconnect', () => delete connectedClients[socket.id])
 });
 
 server.listen(port, () => {
