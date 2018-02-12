@@ -10,7 +10,6 @@ import itemQuantityFetchStatus from './itemQuantityFetchStatus';
 import customerServiceAvailability from './customerServiceAvailability';
 import canCheckOut from './canCheckOut';
 import checkOutPhase from './checkOutPhase';
-import clientId from './clientId';
 
 export default combineReducers({
   isCheckingOut,
@@ -24,5 +23,4 @@ export default combineReducers({
   customerServiceAvailability,
   canCheckOut,
   checkOutPhase,
-  clientId
 });

@@ -10,5 +10,4 @@ export default {
   customerServiceAvailability: false,
   canCheckOut: false,
   checkOutPhase: null,
-  clientId: null
 };

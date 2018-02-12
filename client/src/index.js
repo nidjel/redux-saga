@@ -17,4 +17,3 @@ ReactDOM.render(
 , document.getElementById('AppContainer'));
 
 store.dispatch(getCurrentUserInfo('U10000'));
-store.dispatch(setClientId(Math.random()));

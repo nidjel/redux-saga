@@ -1,10 +1,10 @@
 import { call, put, take } from 'redux-saga/effects';
 import {eventChannel} from 'redux-saga';
 import {setCustomerServiceAvailability} from '../actions';
-import io from 'socket.io-client';
+import socket from '../createSocketConnection';
 
 export function* customerServiceAvailabilitySaga() {
-  const socket = io('http://localhost:8081/');
+  
   const channel = eventChannel(emit => {
     const enableSupportMessage = ()=>{
       emit(true)
